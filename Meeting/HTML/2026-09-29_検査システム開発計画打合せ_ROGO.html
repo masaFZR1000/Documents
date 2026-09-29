@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>検査システム開発計画打合せ（ログ付き）</title>
+  <style>
+body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Yu Gothic UI","Meiryo",sans-serif;
+    line-height: 1.8;
+    position: relative;
+    padding-right: 180px; /* 右上ロゴ分 */
+}
+h1{
+    color:#003366;
+    border-bottom:4px solid #003366;
+    padding-bottom:10px;
+}
+h2{
+    color:#003366;
+    border-left:8px solid #005999;
+    background:#F0F7FF;
+    padding:8px 15px;
+}
+h3{
+    color:#003366;
+}
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+th{
+    background:#005999;
+    color:white;
+}
+th,td{
+    border:1px solid #CCCCCC;
+    padding:8px;
+    vertical-align: top;
+}
+.decision{
+    background:#E8FFF0;
+    border-left:8px solid #00AA55;
+    padding:15px;
+    margin:10px 0;
+}
+.todo{
+    background:#FFF0F0;
+    border-left:8px solid #CC0000;
+    padding:15px;
+    margin:10px 0;
+}
+.summary{
+    background:#FFFCE8;
+    border-left:8px solid #D0A000;
+    padding:15px;
+    margin:10px 0;
+}
+.logbox{
+    background:#f7f9fc;
+    border-left:6px solid #6b8bb6;
+    padding:12px 14px;
+    margin:10px 0 20px;
+    font-size: 0.95rem;
+}
+small.code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background:#eef3f8;
+    padding:2px 6px;
+    border-radius:4px;
+}
+.top-right-logo{
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  width: 120px;
+  z-index: 10;
+}
+.top-right-logo img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 760px){
+  body{ padding-right: 20px; }
+  .top-right-logo{
+    position: static;
+    width: 100px;
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="top-right-logo">
+    <img src="../Template/議事録ロゴ.png" alt="議事録ロゴ">
+  </div>
+
+  <h1>検査システム開発計画打合せ（ログ付き）</h1>
+
+  <blockquote>
+    日時：2026/10/01（トランスクリプトベース）<br>
+    場所：Teams<br>
+    参加者：
+    <ul>
+      <li>山本 雅一</li>
+      <li>足立 元史</li>
+      <li>狩野 忠彦</li>
+    </ul>
+  </blockquote>
+
+  <hr>
+
+  <h2>📋 会議概要</h2>
+  <div class="summary">
+    山本氏より、マッハ向け自動検査システムの仕様案（画面構成、CSV読込、判定ロジック、帳票出力、保存先フォルダ構成）を説明。<br>
+    足立氏から運用面（年度フォルダ自動生成、周波数入力、NG時の説明資料、提出帳票の見せ方、記録計マスタ追加運用）に関する要望が提示された。<br>
+    後半で狩野氏を交えて、発注・依頼票・検収/請求手続きも確認した。
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b>
+    <ul>
+      <li><small class="code">00:03:06-00:03:25</small> 仕様最終説明の目的共有</li>
+      <li><small class="code">00:06:25-00:10:11</small> 画面・CSV判定・出力の全体像</li>
+      <li><small class="code">00:55:14-00:59:50</small> 発注/依頼/検収の会話</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h2>✅ 決定事項</h2>
+
+  <div class="decision">
+    <h3>1) 保存フォルダは自動作成する</h3>
+    <ul>
+      <li>年度フォルダ未作成でも自動で作成する方針。</li>
+      <li>配下は「カスタム製品 → マッハ → 型式(12/14/16/22) → オーダー番号 → ユーザー」構成で作成。</li>
+    </ul>
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b> <small class="code">00:24:27-00:26:18</small> / <small class="code">00:25:31-00:25:57</small>
+  </div>
+
+  <div class="decision">
+    <h3>2) 周波数は通常60Hz、必要時50Hz切替</h3>
+    <ul>
+      <li>画面上で設定可能にする要望を採用。</li>
+      <li>概要画面で選べる形を想定。</li>
+    </ul>
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b> <small class="code">00:26:59-00:28:37</small>
+  </div>
+
+  <div class="decision">
+    <h3>3) NG時でもデータ出力を行う</h3>
+    <ul>
+      <li>NG時の説明用途として、PDF/印刷可能な資料出力が必要。</li>
+      <li>最低限、NG時でも試験データを書き出せる方向で合意。</li>
+    </ul>
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b> <small class="code">00:29:03-00:31:55</small> / <small class="code">00:35:46-00:35:57</small>
+  </div>
+
+  <div class="decision">
+    <h3>4) 提出用帳票は顧客向け不要情報を削減</h3>
+    <ul>
+      <li>使用チャンネルや内部的な変動情報などは「見せない」方向。</li>
+      <li>チェックシート番号はマッハでは不要とする。</li>
+    </ul>
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b> <small class="code">00:51:03-00:51:52</small> / <small class="code">00:36:07-00:36:44</small>
+  </div>
+
+  <div class="decision">
+    <h3>5) 計測器はGL840前提</h3>
+    <ul>
+      <li>当面は GL840 系で運用。</li>
+      <li>将来フォーマット変更時は別途改修対応。</li>
+    </ul>
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b> <small class="code">00:49:09-00:50:35</small>
+  </div>
+
+  <div class="decision">
+    <h3>6) 作業着手は進める</h3>
+    <ul>
+      <li>会議での指摘反映後、開発を進行することで認識一致。</li>
+    </ul>
+  </div>
+  <div class="logbox">
+    <b>ログ根拠:</b> <small class="code">00:59:37-00:59:47</small>
+  </div>
+
+  <hr>
+
+  <h2>⚠️ 課題</h2>
+  <table>
+    <thead>
+      <tr><th>No</th><th>課題</th><th>内容</th><th>ログ根拠</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>室温/水温チャンネル判定ルール</td>
+        <td>11ch以降の使い方、水温混在時の誤判定防止ルール整理が必要。</td>
+        <td><small class="code">00:38:40-00:41:24</small></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>記録計マスタの現場更新</td>
+        <td>交換・追加が年1〜2回あるため、現場で更新できる仕組み要望。</td>
+        <td><small class="code">00:46:13-00:47:46</small></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>NG説明資料の形式</td>
+        <td>PDF/印刷時の項目（下限上限表示等）をどこまで載せるか未確定。</td>
+        <td><small class="code">00:32:33-00:35:54</small></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>集計帳票追加</td>
+        <td>製造番号×判定指標（上昇/降下/変動）一覧化の追加要望あり。</td>
+        <td><small class="code">00:52:28-00:53:44</small></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>🔥 TODO</h2>
+  <div class="todo">
+    <table>
+      <thead>
+        <tr><th>担当</th><th>内容</th><th>期限</th><th>状態</th><th>ログ根拠</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>山本</td><td>指摘反映版仕様書を再配信</td><td>次回共有まで</td><td>未着手</td><td><small class="code">00:59:27-00:59:36</small></td></tr>
+        <tr><td>山本</td><td>周波数入力UI（60/50Hz）反映</td><td>設計時</td><td>未着手</td><td><small class="code">00:26:59-00:28:37</small></td></tr>
+        <tr><td>山本</td><td>NG時PDF/印刷出力の実装方針整理</td><td>設計時</td><td>検討中</td><td><small class="code">00:29:23-00:35:57</small></td></tr>
+        <tr><td>足立</td><td>室温/水温チャンネルの運用ルール提示</td><td>後日</td><td>未着手</td><td><small class="code">00:40:58-00:41:16</small></td></tr>
+        <tr><td>足立</td><td>集計帳票の希望フォーマット送付</td><td>後日</td><td>未着手</td><td><small class="code">00:53:11-00:53:23</small></td></tr>
+        <tr><td>狩野</td><td>スポット業務依頼表の送付</td><td>早急</td><td>進行中</td><td><small class="code">00:56:58-00:57:11</small></td></tr>
+        <tr><td>足立</td><td>依頼表のサイン返送</td><td>受領後速やかに</td><td>未着手</td><td><small class="code">00:57:08-00:57:14</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>📅 スケジュール</h2>
+  <table>
+    <thead><tr><th>項目</th><th>予定</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td>仕様修正版の提示</td><td>直近</td><td><small class="code">00:59:27-00:59:36</small></td></tr>
+      <tr><td>依頼表送付/返送</td><td>早急</td><td><small class="code">00:56:58-00:57:14</small></td></tr>
+      <tr><td>開発作業進行</td><td>即時進行</td><td><small class="code">00:59:37-00:59:47</small></td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>📝 メモ（トランスクリプト取扱い）</h2>
+  <ul>
+    <li>音声認識由来のため、一部語句（固有名詞・専門語）に誤認識あり。</li>
+    <li>本議事録は発話の意図を優先して整形・補正。</li>
+    <li>正式配布前に、周波数条件・帳票項目名・社内手続き用語の最終確認を推奨。</li>
+  </ul>
+
+</body>
+</html>
