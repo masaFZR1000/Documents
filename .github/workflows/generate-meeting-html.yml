@@ -1,0 +1,42 @@
+name: Generate Meeting HTML
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "変換対象の年度フォルダ名 (例: 2026)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generate-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install markdown
+
+      - name: Generate meeting HTML
+        run: python3 scripts/generate_meeting_html.py --year "${{ github.event.inputs.year }}"
+
+      - name: Commit and push generated HTML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Meeting/HTML
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Generate meeting HTML for ${{ github.event.inputs.year }}"
+          git push
