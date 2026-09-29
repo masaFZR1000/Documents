@@ -1,0 +1,64 @@
+<style>
+
+body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Yu Gothic UI","Meiryo",sans-serif;
+    line-height: 1.8;
+}
+
+h1{
+    color:#003366;
+    border-bottom:4px solid #003366;
+    padding-bottom:10px;
+}
+
+h2{
+    color:#003366;
+    border-left:8px solid #005999;
+    background:#F0F7FF;
+    padding:8px 15px;
+}
+
+h3{
+    color:#003366;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th{
+    background:#005999;
+    color:white;
+}
+
+th,td{
+    border:1px solid #CCCCCC;
+    padding:8px;
+}
+
+.decision{
+    background:#E8FFF0;
+    border-left:8px solid #00AA55;
+    padding:15px;
+    margin:10px 0;
+}
+
+.todo{
+    background:#FFF0F0;
+    border-left:8px solid #CC0000;
+    padding:15px;
+    margin:10px 0;
+}
+
+.summary{
+    background:#FFFCE8;
+    border-left:8px solid #D0A000;
+    padding:15px;
+    margin:10px 0;
+}
+
+</style>
