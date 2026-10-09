@@ -120,7 +120,7 @@
         <div class="meeting-info">
             <div class="info-item">
                 <span class="info-label">開催日時</span>
-                <span class="info-value">2026年10月9日</span>
+                <span class="info-value">2026年10月9日  13:00～13:30</span>
             </div>
             <div class="info-item">
                 <span class="info-label">参加者</span>
@@ -139,7 +139,7 @@
         <div class="agenda-item">
             <div class="agenda-title">スキャナー計測イメージ</div>
             <div class="agenda-details">
-                <p><span class="speaker">山本</span>：AMI用25チャンネル一括検査対応。5チャンネルずつの治具を5つ作成。スキャナーボックス（リレーボックス）を今回製造予定。</p>
+                <p><span class="speaker">山本</span>：AMI用25チャンネル一括検査対応。5チャンネルずつの治具を5つ作成。スキャナーボックスを今回設計製造予定。</p>
                 <ul>
                     <li>25チャンネルの計測に対応</li>
                     <li>5チャンネル単位で治具を分割</li>
@@ -176,7 +176,7 @@
                 </ul>
                 
                 <div class="note">
-                    <strong>検査仕様の確認：</strong> 最近の検査では10テラオームのみ測定（従来：1テラと10テラ）
+                    <strong>検査仕様の確認：</strong> 最近の検査では10TΩのみ測定（従来：1Tと10T）
                 </div>
             </div>
         </div>
@@ -184,9 +184,9 @@
         <div class="agenda-item">
             <div class="agenda-title">2種類の基準抵抗ボックス</div>
             <div class="agenda-details">
-                <p><span class="speaker">山本</span>：ローリーク用とスタンダード用の2種類が存在。</p>
+                <p><span class="speaker">山本</span>：低リーク用とスタンダード用の2種類が存在。</p>
                 <ul>
-                    <li><strong>ローリーク用：</strong> アース端子が別途設置、リーク対策済み</li>
+                    <li><strong>低リーク用：</strong> アース端子が別途設置、リーク対策済み</li>
                     <li><strong>スタンダード用：</strong> アース端子なし、固定部でアースを取得</li>
                     <li>逆接続防止機構が必要</li>
                     <li>向きを間違えないように設計</li>
@@ -261,14 +261,14 @@
             <div class="agenda-details">
                 <p><span class="speaker">山本</span>：DMS（デジタル制御システム）でシリアル接続。ポートを開いてコマンド送受信。</p>
                 <ul>
-                    <li>コマンド例：チャンネル指定で該当チャンネルをオン</li>
+                    <li>コマンド例：”CH01”～"CH25"：チャンネル指定で該当チャンネルをオン</li>
                     <li>現状：個別チャンネル指定コマンドのみ実装</li>
                     <li>デリミタ：CR（キャリッジリターン）のみ</li>
                 </ul>
 
                 <div class="action-item">
-                    <strong>【アクション】</strong> 全チャンネルオフコマンドを追加実装
-                    <p>理由：マルチメーター接続時の安全性確保のため、全オフ機能が必要</p>
+                    <strong>【アクション】</strong> 全チャンネルオフコマンド("OFF")を追加実装
+                    <p>理由：絶縁抵抗測定に支障が出ないようにするため、全オフ機能が必要</p>
                 </div>
 
                 <p><span class="speaker">日下</span>：全チャンネルオフコマンドを別途追加してください。</p>
@@ -277,7 +277,7 @@
 
         <h2>8. アクションアイテム</h2>
         <div class="action-item">
-            <strong>【山本→日下】</strong> 全オフコマンドを含む更新版コマンド体系をメールで送付予定
+            <strong>【山本→日下】</strong> 全オフコマンドを含む更新版コマンド体系をBOXに保存予定
         </div>
         <div class="action-item">
             <strong>【日下→山本】</strong> スキャナボックスの設計・製造を実施
@@ -304,21 +304,14 @@
         <div class="agenda-item">
             <div class="agenda-title">オーダー番号確認</div>
             <div class="agenda-details">
-                <p>オーダー番号：26-ハイフォン-012-01</p>
-                <p><span class="speaker">山本</span>：設計作業においては「012-01」で問題なし</p>
-            </div>
-        </div>
-
-        <div class="agenda-item">
-            <div class="agenda-title">その他確認</div>
-            <div class="agenda-details">
-                <p>ボックスが見える（アクセス可能）状態にしておくこと</p>
+                <p>オーダー番号：26-T012</p>
+                <p><span class="speaker">山本</span>：設計作業においては「26-T012」で問題なし</p>
             </div>
         </div>
 
         <h2>11. 次回アクション</h2>
         <ul>
-            <li>山本：全オフコマンド追加後、日下にメール送付</li>
+            <li>山本：全オフコマンド追加後、日下に連絡</li>
             <li>日下：コマンド受領後、スキャナボックス設計・製造開始</li>
             <li>何か問題があれば随時連絡</li>
         </ul>
