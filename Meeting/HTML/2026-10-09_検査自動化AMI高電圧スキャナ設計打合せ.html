@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検査自動化AMI高電圧スキャナ設計打合せ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .meeting-info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            color: #555;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        .agenda-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #2ecc71;
+            border-radius: 3px;
+        }
+        .agenda-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .agenda-details {
+            color: #555;
+            margin-left: 10px;
+        }
+        .speaker {
+            font-weight: bold;
+            color: #3498db;
+        }
+        ul, ol {
+            color: #555;
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .action-item {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        .action-item strong {
+            color: #856404;
+        }
+        .note {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            color: #0c5460;
+        }
+        .participant {
+            display: inline-block;
+            background-color: #e8f4f8;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-right: 8px;
+            color: #2c3e50;
+        }
+        .timestamp {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>検査自動化AMI高電圧スキャナ設計打合せ</h1>
+        
+        <div class="meeting-info">
+            <div class="info-item">
+                <span class="info-label">開催日時</span>
+                <span class="info-value">2026年10月9日</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">参加者</span>
+                <span class="info-value">
+                    <span class="participant">山本 雅一</span>
+                    <span class="participant">日下 美智哉</span>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">議題</span>
+                <span class="info-value">高電圧スキャナー用スキャナボックスの設計・製造</span>
+            </div>
+        </div>
+
+        <h2>1. プロジェクト概要</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">スキャナー計測イメージ</div>
+            <div class="agenda-details">
+                <p><span class="speaker">山本</span>：AMI用25チャンネル一括検査対応。5チャンネルずつの治具を5つ作成。スキャナーボックス（リレーボックス）を今回製造予定。</p>
+                <ul>
+                    <li>25チャンネルの計測に対応</li>
+                    <li>5チャンネル単位で治具を分割</li>
+                    <li>電源とUSB通信が必要</li>
+                    <li>マルチメーター接続対応</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>2. 接続・プローブ設計</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">バナナプラグとプローブの使用方針</div>
+            <div class="agenda-details">
+                <p><span class="speaker">山本</span>：最初はバナナプラグで一括接続を検討していたが、10本一括は厳しいと判断。プローブを使用してジグを挟み込む方式に変更。</p>
+                <ul>
+                    <li>スキャナー側：バナナプラグ接続</li>
+                    <li>プローブ側：ソケット（圧着端子）接続</li>
+                    <li>10本のプローブでジグを挟み込み構成</li>
+                    <li>ケーブル接続による柔軟な配線</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>3. 治具設計の詳細</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">10テラオーム基準抵抗治具</div>
+            <div class="agenda-details">
+                <p><span class="speaker">日下</span>：テフロン線配線により外さずに使用可能な設計を提案。高絶縁のリレーと配線計を用いることで常時接続が可能。</p>
+                <ul>
+                    <li>従来：電圧測定時のみジグをかぶせる方式</li>
+                    <li>改善案：テフロン線配線で常時接続対応</li>
+                    <li>高絶縁リレー＋配線計で500V対応</li>
+                    <li>運用方法については柔軟に対応可能</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>検査仕様の確認：</strong> 最近の検査では10テラオームのみ測定（従来：1テラと10テラ）
+                </div>
+            </div>
+        </div>
+
+        <div class="agenda-item">
+            <div class="agenda-title">2種類の基準抵抗ボックス</div>
+            <div class="agenda-details">
+                <p><span class="speaker">山本</span>：ローリーク用とスタンダード用の2種類が存在。</p>
+                <ul>
+                    <li><strong>ローリーク用：</strong> アース端子が別途設置、リーク対策済み</li>
+                    <li><strong>スタンダード用：</strong> アース端子なし、固定部でアースを取得</li>
+                    <li>逆接続防止機構が必要</li>
+                    <li>向きを間違えないように設計</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>4. コネクタ・配線仕様</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">スキャナー側コネクタ設計</div>
+            <div class="agenda-details">
+                <p><span class="speaker">日下</span>：25ペアのバナナジャック（受け側）を設置。マルチメーター出力も同じくバナナプラグで接続。</p>
+                <ul>
+                    <li>25ペアのバナナジャック実装</li>
+                    <li>マルチメーター出力用バナナジャック</li>
+                    <li>スキャナー側は必要に応じてバナナプラグに変更可能</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="agenda-item">
+            <div class="agenda-title">ケーブル材質</div>
+            <div class="agenda-details">
+                <p><span class="speaker">山本</span>：シリコン線（6kVタイプ）を使用予定。</p>
+                <p><span class="speaker">日下</span>：当社のケアシー実験エリアに在庫あり。柔軟性に優れている。</p>
+                <ul>
+                    <li>素材：シリコン（柔軟）</li>
+                    <li>耐圧：6kV対応</li>
+                    <li>当社在庫から使用可能</li>
+                    <li>必要に応じて手配も可能</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>5. 電源設計</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">電源仕様の決定</div>
+            <div class="agenda-details">
+                <p><span class="speaker">日下</span>：ラズパイPico用電源をUSB給電に決定。</p>
+                <div class="note">
+                    <strong>電流計算：</strong>
+                    <ul>
+                        <li>ラズパイ Pico動作電流：30mA</li>
+                        <li>リレー1個動作電流：30mA</li>
+                        <li>総電流：50mA</li>
+                    </ul>
+                </div>
+                <ul>
+                    <li>当初：AC100V電源を想定</li>
+                    <li>USB 5Vから3.3Vに降圧して使用</li>
+                    <li>外部5V供給と競合するため、USB Q電（USB給電）に変更</li>
+                    <li>50mAの電流ならUSB給電で十分対応可能</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>6. ボックスサイズ</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">アルミボックス仕様</div>
+            <div class="agenda-details">
+                <ul>
+                    <li>サイズ：200mm × 300mm（幅×奥行き）</li>
+                    <li>高さ：60～80mm程度</li>
+                    <li>材質：アルミ</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>7. シリアル通信仕様</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">コマンド体系</div>
+            <div class="agenda-details">
+                <p><span class="speaker">山本</span>：DMS（デジタル制御システム）でシリアル接続。ポートを開いてコマンド送受信。</p>
+                <ul>
+                    <li>コマンド例：チャンネル指定で該当チャンネルをオン</li>
+                    <li>現状：個別チャンネル指定コマンドのみ実装</li>
+                    <li>デリミタ：CR（キャリッジリターン）のみ</li>
+                </ul>
+
+                <div class="action-item">
+                    <strong>【アクション】</strong> 全チャンネルオフコマンドを追加実装
+                    <p>理由：マルチメーター接続時の安全性確保のため、全オフ機能が必要</p>
+                </div>
+
+                <p><span class="speaker">日下</span>：全チャンネルオフコマンドを別途追加してください。</p>
+            </div>
+        </div>
+
+        <h2>8. アクションアイテム</h2>
+        <div class="action-item">
+            <strong>【山本→日下】</strong> 全オフコマンドを含む更新版コマンド体系をメールで送付予定
+        </div>
+        <div class="action-item">
+            <strong>【日下→山本】</strong> スキャナボックスの設計・製造を実施
+            <ul>
+                <li>スケジュール：11月末完成予定</li>
+                <li>開始時期：昨日から着手予定</li>
+                <li>内容：ボックス設計、コネクタ配置、配線等</li>
+            </ul>
+        </div>
+
+        <h2>9. スケジュール</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">プロジェクトスケジュール</div>
+            <div class="agenda-details">
+                <ul>
+                    <li><strong>日下側（スキャナボックス製造）：</strong> 11月末完成予定</li>
+                    <li><strong>山本側（アプリ・その他）：</strong> 11月末以降の予定</li>
+                </ul>
+                <p><span class="speaker">山本</span>：こちらのスケジュールはまだ先になる可能性がある。日下側の11月末納期で問題ない。</p>
+            </div>
+        </div>
+
+        <h2>10. その他の確認事項</h2>
+        <div class="agenda-item">
+            <div class="agenda-title">オーダー番号確認</div>
+            <div class="agenda-details">
+                <p>オーダー番号：26-ハイフォン-012-01</p>
+                <p><span class="speaker">山本</span>：設計作業においては「012-01」で問題なし</p>
+            </div>
+        </div>
+
+        <div class="agenda-item">
+            <div class="agenda-title">その他確認</div>
+            <div class="agenda-details">
+                <p>ボックスが見える（アクセス可能）状態にしておくこと</p>
+            </div>
+        </div>
+
+        <h2>11. 次回アクション</h2>
+        <ul>
+            <li>山本：全オフコマンド追加後、日下にメール送付</li>
+            <li>日下：コマンド受領後、スキャナボックス設計・製造開始</li>
+            <li>何か問題があれば随時連絡</li>
+        </ul>
+
+        <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+        <div style="text-align: center; color: #7f8c8d; font-size: 0.9em; margin-top: 20px;">
+            <p>会議記録作成日：2026年10月9日</p>
+            <p>出典：VTTファイルから自動生成</p>
+        </div>
+    </div>
+</body>
+</html>
