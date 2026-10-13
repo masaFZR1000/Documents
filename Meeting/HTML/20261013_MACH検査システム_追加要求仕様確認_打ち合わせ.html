@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MACH検査システム_追加要求仕様確認_打ち合わせ</title>
+  <style>
+body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Yu Gothic UI","Meiryo",sans-serif;
+    line-height: 1.8;
+}
+
+h1{
+    color:#003366;
+    border-bottom:4px solid #003366;
+    padding-bottom:10px;
+}
+
+h2{
+    color:#003366;
+    border-left:8px solid #005999;
+    background:#F0F7FF;
+    padding:8px 15px;
+}
+
+h3{
+    color:#003366;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th{
+    background:#005999;
+    color:white;
+}
+
+th,td{
+    border:1px solid #CCCCCC;
+    padding:8px;
+}
+
+.decision{
+    background:#E8FFF0;
+    border-left:8px solid #00AA55;
+    padding:15px;
+    margin:10px 0;
+}
+
+.todo{
+    background:#FFF0F0;
+    border-left:8px solid #CC0000;
+    padding:15px;
+    margin:10px 0;
+}
+
+.summary{
+    background:#FFFCE8;
+    border-left:8px solid #D0A000;
+    padding:15px;
+    margin:10px 0;
+}
+  </style>
+</head>
+<body>
+
+<h1>MACH検査システム_追加要求仕様確認_打ち合わせ</h1>
+
+<blockquote>
+  <p>日時：2026/10/13</p>
+  <p>場所：Teams</p>
+  <p>参加者：</p>
+  <ul>
+    <li>山本 雅一</li>
+    <li>足立 元史</li>
+    <li>梅垣 大成</li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<h2>📋 会議概要</h2>
+
+<div class="summary">
+MACH検査システムにおける追加要求仕様として、試験検査報告書の自動発行機能について確認を行った。主な論点は、報告書に出力する項目、電流値の手入力方法、判定表示との連携、画面構成、ならびに運用しやすい入力方式である。
+</div>
+
+<hr>
+
+<h2>✅ 決定事項</h2>
+
+<div class="decision">
+  <h3>決定①</h3>
+  <p>試験検査報告書はシステムから自動発行できるようにする。製品名は共通、型式・製造番号・試験年月日は対象データに応じて出力する。</p>
+</div>
+
+<div class="decision">
+  <h3>決定②</h3>
+  <p>電流値はアプリ画面上から入力できる方式を優先して検討する。入力した値は報告書出力と総合判定に反映できる構成を目指す。</p>
+</div>
+
+<div class="decision">
+  <h3>決定③</h3>
+  <p>責任者欄は初回実装時点では固定入力せず、空欄のまま発行できる運用とする。</p>
+</div>
+
+<hr>
+
+<h2>⚠️ 課題</h2>
+
+<table>
+  <thead>
+    <tr><th>No</th><th>課題</th><th>内容</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>電流値入力UI</td><td>周波数・周囲温度エリアに追加するか、別タブ/別画面にするか要検討</td></tr>
+    <tr><td>2</td><td>製品ごとの差異対応</td><td>ヒーター、CM1、CM2など製品ごとに必要入力項目が異なるため、画面追加の実装コストが高い</td></tr>
+    <tr><td>3</td><td>判定との連携</td><td>手入力した電流値を総合判定（ALL GOOD / NG）にどう組み込むか整理が必要</td></tr>
+    <tr><td>4</td><td>報告書フォーマット差異</td><td>MACH12用とMACH14用で表現差異があるため、どこまで共通化するか整理が必要</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>🔥 TODO</h2>
+
+<div class="todo">
+<table>
+  <thead>
+    <tr><th>担当</th><th>内容</th><th>期限</th><th>状態</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>山本</td><td>電流値入力欄の実装案（同一画面/別タブ/別画面）を検討</td><td>未定</td><td>未着手</td></tr>
+    <tr><td>山本</td><td>報告書自動発行の出力項目整理</td><td>未定</td><td>未着手</td></tr>
+    <tr><td>山本</td><td>製品ごとの差異（MACH12/MACH14、ヒーター系統など）の反映方法を検討</td><td>未定</td><td>未着手</td></tr>
+    <tr><td>足立</td><td>現場運用上、入力しやすい画面イメージの要望整理</td><td>未定</td><td>未着手</td></tr>
+    <tr><td>足立・梅垣</td><td>責任者欄・判定欄の運用方針を必要に応じて追加整理</td><td>未定</td><td>未着手</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>📅 スケジュール</h2>
+
+<table>
+  <thead>
+    <tr><th>項目</th><th>予定日</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>入力方式の検討</td><td>未定</td></tr>
+    <tr><td>報告書自動発行仕様整理</td><td>未定</td></tr>
+    <tr><td>実装方針確定</td><td>未定</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>📝 メモ</h2>
+
+<ul>
+  <li>試験検査報告書の自動発行要望が追加された。</li>
+  <li>出力項目として、製品名、型式、製造番号、試験年月日、試験電源、検査員名、上昇時間・効果時間などを想定。</li>
+  <li>絶縁抵抗値に関する欄は既定値運用を想定している箇所がある。</li>
+  <li>電流値はクランプメーターで手動採取し、システムへ手入力する想定。</li>
+  <li>現場としては、アプリ内で必要値をすべて入力し、そのまま報告書まで出せる形が望ましい。</li>
+  <li>山本から、電流値入力を画面に組み込む場合は製品ごとの差異対応が必要で、実装コストが上がる説明があった。</li>
+  <li>グラフ画面は本来確認用途だが、入力場所として活用する案も議論された。</li>
+  <li>総合判定は各項目のOK/NGをもとに ALL GOOD / NG を表示する構想。</li>
+  <li>操作イメージとしては、製造番号を入力し、CSVを所定領域に配置して自動判定する流れを想定。</li>
+</ul>
+
+<hr>
+
+<h2>📌 次回までのアクション</h2>
+
+<h3>山本</h3>
+<ul>
+  <li>電流値の入力方式を検討する</li>
+  <li>報告書出力レイアウトに必要な項目を整理する</li>
+  <li>製品ごとの差異をどの画面・どのデータ構造で吸収するか検討する</li>
+</ul>
+
+<h3>足立</h3>
+<ul>
+  <li>現場で使いやすい入力方式の要望を追加整理する</li>
+  <li>必要であれば入力項目の優先順位を明確化する</li>
+</ul>
+
+<h3>その他</h3>
+<ul>
+  <li>責任者欄を空欄発行とする運用の妥当性を継続確認する</li>
+  <li>MACH12/MACH14の帳票差異を洗い出す</li>
+</ul>
+
+</body>
+</html>
